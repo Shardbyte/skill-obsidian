@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian"
+  short_description: "Create and customize Obsidian vaults"
+  default_prompt: "Use $skill-obsidian to create a polished Obsidian note and customize its vault experience."
