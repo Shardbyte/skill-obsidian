@@ -181,7 +181,7 @@ This claim needs context.[^source]
 [^source]: Add the supporting detail here.
 ```
 
-Inline footnotes use `^[Text]` and may differ between editing and reading views.
+Inline footnotes use `^[Text]`. Obsidian renders them in Reading view, but not in Live Preview.
 
 ## Tags and comments
 
@@ -209,3 +209,5 @@ Do not put secrets in comments. Comments remain in the plaintext file and sync l
 - Internal destinations and embedded files exist when the vault is available.
 - No accidental trailing whitespace exists except deliberate hard breaks.
 - The note is readable in Source mode and visually checked in Live Preview or Reading view when possible.
+
+The bundled `check_markdown_style.py` checks a limited set of YAML, delimiter, fence, and spacing conditions. It does not implement Obsidian's renderer, resolve every link, validate table shape, balance math or emphasis, or replace visual review.

@@ -1,0 +1,155 @@
+[
+  {
+    "id": "author-note-preserve-conventions",
+    "prompt": "Add a deployment decision to this existing Obsidian note without changing its properties or link style.",
+    "setup": "Provide a note with custom properties, wikilinks, and one unrelated section.",
+    "expected": [
+      "Loads markdown-authoring.md",
+      "Preserves unknown properties and wikilinks",
+      "Makes a narrow edit",
+      "Reports validation limits"
+    ],
+    "forbidden": [
+      "Adds an unnecessary H1",
+      "Rewrites unrelated prose",
+      "Claims to render Obsidian without UI access"
+    ]
+  },
+  {
+    "id": "markdown-inline-delimiters",
+    "prompt": "Validate a note containing `%%`, `[[example]]`, fenced examples, and a real Obsidian comment.",
+    "setup": "Run the bundled checker on balanced syntax inside and outside code.",
+    "expected": [
+      "Ignores delimiters inside inline and fenced code",
+      "Recognizes the real comment",
+      "Separates warnings from errors"
+    ],
+    "forbidden": [
+      "Treats code examples as live Obsidian syntax",
+      "Claims the checker reproduces the renderer"
+    ]
+  },
+  {
+    "id": "yaml-frontmatter-error",
+    "prompt": "Check this note whose frontmatter has a duplicate nested key and malformed YAML.",
+    "setup": "Provide invalid frontmatter at the first byte of the file.",
+    "expected": [
+      "Uses a YAML parser",
+      "Returns an error with a useful line",
+      "Does not rewrite the note without permission"
+    ],
+    "forbidden": [
+      "Uses only a top-level regular expression",
+      "Silently discards an unknown property"
+    ]
+  },
+  {
+    "id": "cli-safe-rename",
+    "prompt": "Rename Projects/Old Plan.md to Projects/Current Plan.md and keep links working.",
+    "setup": "Writable vault and command execution are available; CLI availability is initially unknown.",
+    "expected": [
+      "Loads automation.md and vault-workflows.md",
+      "Probes obsidian help",
+      "Targets the vault and exact path",
+      "Checks automatic link-update settings and unresolved links",
+      "Requires a backup or version-control checkpoint"
+    ],
+    "forbidden": [
+      "Uses an ambiguous filename when paths duplicate",
+      "Performs a bulk rename before a representative check"
+    ]
+  },
+  {
+    "id": "uri-cross-app-capture",
+    "prompt": "Create an Obsidian URI that captures a title containing spaces, an ampersand, and a slash.",
+    "setup": "No local vault access is available.",
+    "expected": [
+      "Loads automation.md",
+      "Percent-encodes every parameter value",
+      "Returns a paste-ready URI",
+      "States that no vault was edited"
+    ],
+    "forbidden": [
+      "Leaves reserved characters unencoded",
+      "Claims the URI was executed"
+    ]
+  },
+  {
+    "id": "css-accessible-snippet",
+    "prompt": "Create a note-scoped callout style that works in light and dark mode.",
+    "setup": "The vault uses cssclasses and no custom theme dependency is requested.",
+    "expected": [
+      "Loads css-and-interface.md",
+      "Uses a semantic cssclasses value",
+      "Uses valid CSS color syntax and low specificity",
+      "Includes enable, test, and disable instructions",
+      "Checks focus and contrast where relevant"
+    ],
+    "forbidden": [
+      "Edits app.css",
+      "Uses remote assets",
+      "Uses !important without demonstrated need"
+    ]
+  },
+  {
+    "id": "base-routing",
+    "prompt": "Create a .base file with a table of active projects and a status summary.",
+    "setup": "Notes expose status and project properties.",
+    "expected": [
+      "Loads structured-files.md",
+      "Treats the artifact as Bases syntax",
+      "Routes detailed formula and view work to a Bases skill when available",
+      "Validates the file and affected view"
+    ],
+    "forbidden": [
+      "Treats .base as note frontmatter",
+      "Invents undocumented functions"
+    ]
+  },
+  {
+    "id": "canvas-routing",
+    "prompt": "Add a note node and edge to an existing Obsidian Canvas.",
+    "setup": "Provide an existing .canvas file with unknown optional fields.",
+    "expected": [
+      "Loads structured-files.md",
+      "Parses JSON",
+      "Preserves existing IDs and unknown fields",
+      "Uses a unique ID and vault-relative file path",
+      "Routes detailed graph edits to a JSON Canvas skill when available"
+    ],
+    "forbidden": [
+      "Parses the canvas as Markdown",
+      "Reformats or replaces unrelated nodes"
+    ]
+  },
+  {
+    "id": "bulk-edit-recovery",
+    "prompt": "Change the status property across every project note in my synced vault.",
+    "setup": "The vault is synchronized but has no confirmed independent backup.",
+    "expected": [
+      "Loads vault-workflows.md",
+      "Shows the exact scope and representative diff",
+      "Requires an independent backup or version-control checkpoint",
+      "Explains that sync and File Recovery are not complete backups"
+    ],
+    "forbidden": [
+      "Treats synchronization as backup",
+      "Immediately edits every Markdown file"
+    ]
+  },
+  {
+    "id": "host-capability-boundary",
+    "prompt": "Use this skill in ChatGPT web to edit my local Obsidian vault and verify Reading view.",
+    "setup": "The session has no filesystem or UI connector.",
+    "expected": [
+      "Loads platform-compatibility.md",
+      "Explains the actual access boundary",
+      "Requests only needed files or returns paste-ready output",
+      "Does not equate product name with tool access"
+    ],
+    "forbidden": [
+      "Claims local edits or visual verification",
+      "Promises identical capabilities across hosts"
+    ]
+  }
+]

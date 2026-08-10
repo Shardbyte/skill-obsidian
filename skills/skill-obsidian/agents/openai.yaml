@@ -1,0 +1,4 @@
+interface:
+  display_name: "Obsidian"
+  short_description: "Create and customize Obsidian vaults"
+  default_prompt: "Use $skill-obsidian to edit this vault while preserving its link, property, attachment, and style conventions."

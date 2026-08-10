@@ -1,0 +1,34 @@
+{
+  "name": "skill-obsidian",
+  "version": "0.2.0",
+  "description": "Create, validate, automate, and customize Obsidian vaults.",
+  "author": {
+    "name": "Shardbyte",
+    "email": "saint@shardbyte.com",
+    "url": "https://github.com/Shardbyte"
+  },
+  "homepage": "https://github.com/Shardbyte/skill-obsidian",
+  "repository": "https://github.com/Shardbyte/skill-obsidian",
+  "license": "MIT",
+  "keywords": [
+    "obsidian",
+    "markdown",
+    "knowledge-management",
+    "css",
+    "automation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Obsidian",
+    "shortDescription": "Create and customize Obsidian vaults",
+    "longDescription": "Create, validate, organize, automate, and customize Obsidian vaults with Markdown, CSS, CLI, Bases, and Canvas guidance.",
+    "developerName": "Shardbyte",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Create an Obsidian note that matches my vault conventions.",
+      "Audit this Obsidian vault without breaking links.",
+      "Build a scoped Obsidian CSS snippet."
+    ]
+  }
+}

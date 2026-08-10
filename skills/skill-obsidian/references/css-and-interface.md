@@ -61,8 +61,10 @@ Follow these rules:
 
 - Prefer variables over deep selectors tied to transient DOM structure.
 - Inspect the current app with Developer Tools when no documented variable exists.
-- Scope selectors narrowly and avoid `!important` unless cascade inspection proves it necessary.
-- Include visible focus states and sufficient contrast.
+- Keep specificity low, scope selectors narrowly, and avoid `!important` unless cascade inspection proves it necessary.
+- Avoid `:has()` unless no simpler selector works; it can be expensive, especially in Canvas.
+- Keep fonts, images, and other assets local. Remote assets can fail offline and disclose requests to third parties.
+- Include visible keyboard focus states, sufficient contrast, readable text sizing, and reduced-motion behavior where animation is introduced.
 - Check editor and Reading view; their DOM structures differ.
 - Check both light and dark modes, narrow panes, and mobile when relevant.
 - Add a short comment stating purpose and expected scope, not a narrative changelog.
@@ -96,7 +98,7 @@ Target a custom callout identifier with `data-callout`:
 
 ```css
 .callout[data-callout="decision"] {
-  --callout-color: 46, 160, 67;
+  --callout-color: rgb(46, 160, 67);
   --callout-icon: lucide-git-branch;
 }
 ```
@@ -127,7 +129,9 @@ For each customization:
 3. Check Source mode, Live Preview, and Reading view as applicable.
 4. Check the default theme to distinguish snippet defects from theme conflicts.
 5. Check light and dark schemes and keyboard focus.
-6. Validate CSS syntax with an appropriate validator.
-7. Disable or remove the snippet to confirm the rollback path.
+6. Check narrow panes, zoom, reduced motion, and mobile when relevant.
+7. Inspect Canvas performance if selectors can match many nodes.
+8. Validate CSS syntax with an appropriate validator.
+9. Disable or remove the snippet to confirm the rollback path.
 
 When a style fails, inspect selector matching and computed values before increasing specificity.

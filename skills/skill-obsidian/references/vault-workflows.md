@@ -22,6 +22,7 @@ Separate the desired outcome from the available execution surface:
 | User-provided note excerpts only | Edit only supplied content and identify missing context. |
 | Read-only vault access | Audit conventions and propose an exact patch. |
 | Writable vault access | Inspect, edit narrowly, validate, and report changed paths. |
+| First-party Obsidian CLI access | Prefer link-aware commands for moves, renames, properties, search, and validation. |
 | Obsidian UI access | Also verify Live Preview or Reading view and current settings. |
 
 Do not infer filesystem or UI access from labels such as ChatGPT, Codex, Claude, web, desktop, or Work. Inspect the actual tools available in the current session.
@@ -35,6 +36,7 @@ Before editing, identify:
 - Existing properties, aliases, tags, and date formats.
 - Whether internal links use wikilinks or Markdown links.
 - The configured attachment and new-note locations.
+- Whether the vault is stored in a local, network, cloud-backed, or synchronized folder.
 - Template folders and the core/community features they assume.
 - Existing CSS snippets, themes, and note `cssclasses`.
 - Version-control, sync, or backup behavior.
@@ -61,9 +63,9 @@ Prefer Obsidian's own file operations when **Automatically update internal links
 
 Use this sequence:
 
-1. Create a checkpoint through the user's existing version control, backup, or sync recovery mechanism.
+1. Create a separate backup or version-control checkpoint. Do not rely on sync or File Recovery as the only recovery path.
 2. Inventory inbound links, embeds, aliases, and plugin references.
-3. Rename or move one representative note.
+3. Rename or move one representative note inside Obsidian or with its first-party CLI.
 4. Confirm links and embeds in Reading view.
 5. Expand the change in bounded batches.
 6. Search for old paths and unresolved destinations.
@@ -82,6 +84,8 @@ For bulk property or text changes:
 6. Run structural validation, inspect `git diff` when available, and open sample notes in Obsidian.
 
 Obsidian does not provide native bulk property editing for every case. Scripts or plugins may be appropriate, but require an explicit backup and a narrow scope.
+
+When the first-party CLI is available, use it for link-aware operations and post-change checks. When it is unavailable, direct file edits are acceptable for narrow plaintext work, but external moves can bypass automatic link updates.
 
 ## Plugins and portability
 
@@ -104,4 +108,8 @@ For portable vaults, favor standard Markdown links, plain lists, conventional YA
 - Do not place secrets in properties, comments, templates, CSS, or examples.
 - Do not overwrite `.obsidian` wholesale.
 - Preserve an easy disable path for snippets, themes, and plugins.
-- Report which recovery mechanism can revert a change: Git, Obsidian File Recovery, sync history, or a manual backup.
+- Inspect Obsidian's storage guidance before moving a vault between local, network, cloud-backed, and synchronized locations.
+- Keep at least one independent backup outside the active vault and its synchronization path.
+- Treat synchronization as replication, not backup: unwanted edits or deletions can propagate.
+- Treat Obsidian File Recovery as device-local recovery help, not a complete backup. Its snapshots do not sync between devices.
+- Report which independent backup or version-control checkpoint can revert the change, plus any secondary File Recovery or sync history that may help.
